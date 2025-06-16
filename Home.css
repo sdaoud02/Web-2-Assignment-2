@@ -1,0 +1,13 @@
+/* --- Home.css --- */
+/* Only page-specific styles remain here */
+
+h1 {
+    color: #0056b3;
+}
+
+.hero-image {
+    width: 100%; /* We'll make this responsive later */
+    height: auto;
+}
+
+

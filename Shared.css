@@ -1,0 +1,275 @@
+/*Improvement from Assignment 1*/ 
+/* Moved all these repeated styles from all CSS files into shared.cc*/ 
+ 
+/* Basic page styles */ 
+ 
+:root { 
+    --primary-color: #007bff; 
+    --secondary-color: #6c757d; 
+    --dark-color: #333; 
+    --light-color: #f4f4f4; 
+    --text-color: #333; 
+    --font-family: Arial, sans-serif; 
+    --max-content-width: 990px; /* For large screen centering */ 
+    --side-background-color: #e9ecef; /* A light grey for the sides */ 
+ 
+} 
+ 
+/* Basic page styles */ 
+body { 
+    font-family: var(--font-family); 
+    margin: 0; 
+    padding: 0; 
+    line-height: 1.6; 
+    color: var(--text-color); 
+    background-color: white; /* Default background for smaller screens */ 
+} 
+
+/* ADD THIS NEW H6 RULE HERE to increase its font size */
+h6 {
+       font-size: 1em; 
+    line-height: 1.4; 
+    color: var(--text-color); 
+}
+ 
+ 
+/* Container for centering content on large screens (assuming HTML has <div 
+class="container">) */ 
+.container { 
+    width: 100%; 
+    margin: 0 auto; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+} 
+ 
+/* Navigation Bar */ 
+.navbar { 
+    background-color: var(--dark-color); 
+    color: white; 
+    padding: 1em 0; 
+    text-align: center; 
+} 
+ 
+.navbar ul { 
+    list-style-type: none;  
+    padding: 0;   
+    margin: 0;   
+  } 
+ 
+.navbar a { 
+    color: white; 
+    padding: 0 15px; 
+    text-decoration: none; 
+    display: inline-block; 
+} 
+ 
+.navbar a:hover { 
+    background-color: var(--secondary-color); 
+} 
+ 
+.row { 
+    display: flex; 
+    flex-wrap: wrap; 
+} 
+ 
+.main { 
+    flex: 70%; 
+    padding: 20px; 
+} 
+ 
+.side { 
+    flex: 30%; 
+    background-color: var(--light-color); 
+    padding: 20px; 
+} 
+ 
+/* Footer */ 
+.footer { 
+    background-color: var(--dark-color); 
+    color: white; 
+    text-align: center; 
+    padding: 1em 0; 
+    position: relative; 
+    bottom: 0; 
+    width: 100%; 
+} 
+ 
+.header { 
+    text-align: center; 
+    padding: 20px 0; 
+} 
+ 
+.header img { 
+    margin: 0 auto;  
+    display: block; 
+} 
+ 
+.navbar { 
+    background-color: var(--dark-color); 
+    color: white; 
+    padding: 1em 0; 
+    text-align: center;  
+} 
+ 
+ 
+/* Common form styling */ 
+/* The Assignment 1 feedback stated: "Mandatory fields are not visually distinguishable."  */ 
+form { 
+    padding: 20px; 
+    background-color: var(--light-color); 
+    border-radius: 5px; 
+} 
+input[type="text"], 
+input[type="email"], 
+textarea { 
+    width: 100%; 
+    padding: 8px; 
+    margin-bottom: 10px; 
+    border: 1px solid #ddd; 
+    box-sizing: border-box; 
+} 
+ 
+input:required { 
+    border-left: 5px solid var(--primary-color);  
+} 
+ 
+label.required::after { 
+    content: " *"; 
+    color: red; 
+    margin-left: 5px; 
+} 
+  
+ 
+button { 
+    background-color: var(--primary-color); 
+    color: white; 
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+} 
+button:hover { 
+    background-color: var(--dark-color); 
+} 
+ 
+/*  The Assignment 1 feedback noted: "The images may be a bit large." */ 
+img { 
+    max-width: 100%; /* Ensures image doesn't overflow its parent container */ 
+    height: auto;     
+    display: block;   
+} 
+ 
+/* The feedback noted: "No pseudo element selector." */ 
+h1::after, 
+h2::after { 
+    content: ""; /* Required for pseudo-elements */ 
+    display: block; 
+    width: 50px; 
+    height: 3px; 
+    background-color: var(--primary-color); 
+    margin-top: 10px; 
+    margin-bottom: 20px; 
+} 
+ 
+ 
+/* Media Queries for Responsive Design */ 
+/* For Assignment 2 *. 
+ 
+/* Small Devices (up to 590px) */ 
+@media screen and (max-width: 590px) { 
+    .row { 
+        flex-direction: column; /* Stacks main and side content vertically */ 
+    } 
+ 
+    .main, .side { 
+        flex: 100%; /* Each takes full width */ 
+    } 
+ 
+    /* Vertical Navigation */ 
+    .navbar { 
+        padding: 0.5em 0; /* Adjust padding */ 
+    } 
+    .navbar a { 
+        display: block; /* Each link takes full width */ 
+        padding: 10px 0; 
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator */ 
+    } 
+    .navbar a:last-child { 
+        border-bottom: none; /* No separator for the last item */ 
+    } 
+} 
+ 
+/* Medium Devices*/ 
+@media screen and (min-width:590px) and (max-width:789px){ 
+ 
+    .row { 
+        display:grid; 
+        grid-template-columns:1fr 1fr; 
+        gap: 20px; 
+        grid-template-rows: auto auto; 
+    } 
+     
+  .main, .side { 
+    grid-column: span 1; 
+   } 
+ 
+    .navbar a { 
+        padding: 0 15px; 
+        font-size: 0.9em 
+    } 
+ 
+    .header { 
+        display: flex; 
+        justify-content: space-between;  
+        align-items: center; 
+        padding: 20px; 
+        text-align: left; 
+      } 
+    .header img { 
+        margin: 0; 
+    } 
+ 
+    .navbar { 
+        margin-left: auto;  
+        text-align: right;   
+        padding: 0; 
+      } 
+} 
+ 
+ 
+ 
+/* Large Devices (990px and wider) */ 
+/* For Assignment 2 */ 
+@media screen and (min-width: 991px) {   /* Use 991px to start after 990px breakpoint */ 
+    .container { 
+        max-width: 790px;   /* Fixed width for content */ 
+        margin: 0 auto; /* Center the container */ 
+        background-color: white; /* Ensure content background is white over colored body */ 
+    } 
+ 
+    body { 
+        background-color: var(--side-background-color); /* Plain color for the sides */ 
+    } 
+ 
+    .header { 
+        max-width: 790px; 
+        margin: 0 auto; 
+        padding: 20px 0; 
+    } 
+ 
+    .header img { 
+        margin: 0; 
+    } 
+ 
+    .navbar { 
+        margin-left: auto;  
+        text-align: right;   
+        padding: 0; 
+      } 
+ 
+ 
+      .navbar { 
+        margin-left: auto;  
+text-align: right; 
+padding: 0; 
+} 
+}
