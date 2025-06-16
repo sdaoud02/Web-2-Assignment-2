@@ -14,6 +14,7 @@
     --side-background-color: #e9ecef; /* A light grey for the sides */ 
  
 } 
+
  
 /* Basic page styles */ 
 body { 
@@ -22,7 +23,7 @@ body {
     padding: 0; 
     line-height: 1.6; 
     color: var(--text-color); 
-    background-color: white; /* Default background for smaller screens */ 
+    background-color: var(--side-background); /* Default background for smaller screens */ 
 } 
 
 /* ADD THIS NEW H6 RULE HERE to increase its font size */
@@ -36,9 +37,13 @@ h6 {
 /* Container for centering content on large screens (assuming HTML has <div 
 class="container">) */ 
 .container { 
-    width: 100%; 
-    margin: 0 auto; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+    .container {
+        max-width: var(--max-content-width);
+        margin: 0 auto;
+        background-color: var(--content-background);
+        min-height: 100vh;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 } 
  
 /* Navigation Bar */ 
@@ -159,23 +164,33 @@ img {
 } 
  
 /* The feedback noted: "No pseudo element selector." */ 
+
 h1::after, 
 h2::after { 
     content: ""; /* Required for pseudo-elements */ 
-    display: block; 
-    width: 50px; 
-    height: 3px; 
+    display: block ; 
+    width: 50px ;  
+    height: 3px ; 
     background-color: var(--primary-color); 
-    margin-top: 10px; 
-    margin-bottom: 20px; 
+    margin-top: 10px ; 
+    margin-bottom: 20px ; 
 } 
- 
  
 /* Media Queries for Responsive Design */ 
 /* For Assignment 2 *. 
  
 /* Small Devices (up to 590px) */ 
 @media screen and (max-width: 590px) { 
+    .container { 
+        max-width: 790px;   /* Fixed width for content */ 
+        margin: 0 auto; /* Center the container */ 
+        background-color: white; /* Ensure content background is white over colored body */ 
+        box-shadow: none;
+    } 
+ 
+    body { 
+        background-color: var(--side-background-color); /* Plain color for the sides */ 
+    } 
     .row { 
         flex-direction: column; /* Stacks main and side content vertically */ 
     } 
@@ -200,7 +215,18 @@ h2::after {
  
 /* Medium Devices*/ 
 @media screen and (min-width:590px) and (max-width:789px){ 
- 
+.container { 
+    max-width: 790px;   /* Fixed width for content */ 
+    margin: 0 auto; /* Center the container */ 
+    background-color: white; /* Ensure content background is white over colored body */ 
+    box-shadow: none;
+} 
+
+
+body { 
+    background-color: var(--side-background-color); /* Plain color for the sides */ 
+} 
+
     .row { 
         display:grid; 
         grid-template-columns:1fr 1fr; 
@@ -233,8 +259,7 @@ h2::after {
         text-align: right;   
         padding: 0; 
       } 
-} 
- 
+}
  
  
 /* Large Devices (990px and wider) */ 
@@ -244,6 +269,7 @@ h2::after {
         max-width: 790px;   /* Fixed width for content */ 
         margin: 0 auto; /* Center the container */ 
         background-color: white; /* Ensure content background is white over colored body */ 
+        box-shadow: none;
     } 
  
     body { 

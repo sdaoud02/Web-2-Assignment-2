@@ -42,3 +42,7 @@ tr:hover {
 #scheduling-check {
   color: black !important;
 }
+
+header{
+  text-emphasis-color: black;
+}
